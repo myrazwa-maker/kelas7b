@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT ME - Let's Introduce Ourselves! | Kelas 7 SMP</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tone.js for interactive audio sound effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            300: '#7dd3fc',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                        },
+                        cheerful: {
+                            yellow: '#fef08a',
+                            orange: '#ffedd5',
+                            pink: '#fce7f3',
+                            purple: '#f3e8ff',
+                            green: '#dcfce7',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Fredoka', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .animate-bounce-subtle {
+            animation: bounceSubtle 2s infinite;
+        }
+        @keyframes bounceSubtle {
+            0%, 100% { transform: translateY(-3%); }
+            50% { transform: translateY(0); }
+        }
+        .card-flip {
+            perspective: 1000px;
+        }
+        .card-flip-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card-flip.flipped .card-flip-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('start')">
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-400 to-blue-600 flex items-center justify-center text-white shadow-md font-heading text-xl font-bold">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div>
+                        <span class="font-heading text-xl font-bold text-slate-800 tracking-wide block leading-none">ABOUT ME</span>
+                        <span class="text-xs font-medium text-sky-600 block mt-0.5">English Class 7 SMP</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Buttons -->
+                <nav class="hidden lg:flex items-center space-x-1 font-medium text-sm">
+                    <button onclick="navigateTo('start')" id="nav-start" class="nav-btn px-3 py-2 rounded-xl transition text-slate-600 hover:text-sky-600 hover:bg-sky-50 font-semibold">
+                        <i class="fa-solid fa-house mr-1"></i> START
+                    </button>
+                    <button onclick="navigateTo('learn')" id="nav-learn" class="nav-btn px-3 py-2 rounded-xl transition text-slate-600 hover:text-sky-600 hover:bg-sky-50 font-semibold">
+                        <i class="fa-solid fa-book-open mr-1"></i> LEARN
+                    </button>
+                    <button onclick="navigateTo('practice')" id="nav-practice" class="nav-btn px-3 py-2 rounded-xl transition text-slate-600 hover:text-sky-600 hover:bg-sky-50 font-semibold">
+                        <i class="fa-solid fa-pen-ruler mr-1"></i> PRACTICE
+                    </button>
+                    <button onclick="navigateTo('speaking')" id="nav-speaking" class="nav-btn px-3 py-2 rounded-xl transition text-slate-600 hover:text-sky-600 hover:bg-sky-50 font-semibold">
+                        <i class="fa-solid fa-microphone mr-1"></i> SPEAKING
+                    </button>
+                    <button onclick="navigateTo('reflection')" id="nav-reflection" class="nav-btn px-3 py-2 rounded-xl transition text-slate-600 hover:text-sky-600 hover:bg-sky-50 font-semibold">
+                        <i class="fa-solid fa-heart mr-1"></i> REFLECTION
+                    </button>
+                    <button onclick="navigateTo('score')" id="nav-score" class="nav-btn px-3 py-2 rounded-xl transition text-slate-600 hover:text-sky-600 hover:bg-sky-50 font-semibold">
+                        <i class="fa-solid fa-trophy mr-1"></i> MY SCORE
+                    </button>
+                    <button onclick="navigateTo('teacher')" id="nav-teacher" class="nav-btn px-3 py-2 rounded-xl transition text-slate-600 hover:text-sky-600 hover:bg-sky-50 font-semibold">
+                        <i class="fa-solid fa-user-gear mr-1"></i> DASHBOARD
+                    </button>
+                </nav>
+
+                <!-- Quick Export Options & Mobile Menu Toggle -->
+                <div class="flex items-center space-x-2">
+                    <button onclick="openModal('docs-modal')" title="Export to Google Docs Format" class="p-2 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-100 transition text-sm flex items-center gap-1 font-medium">
+                        <i class="fa-solid fa-file-word"></i> <span class="hidden sm:inline">Docs</span>
+                    </button>
+                    <button onclick="openModal('sheets-modal')" title="Export Score to Google Sheets / CSV" class="p-2 rounded-xl bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition text-sm flex items-center gap-1 font-medium">
+                        <i class="fa-solid fa-file-excel"></i> <span class="hidden sm:inline">Sheets</span>
+                    </button>
+                    
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-1 shadow-lg">
+            <button onclick="navigateTo('start'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-slate-700 font-medium hover:bg-sky-50"><i class="fa-solid fa-house w-6 text-sky-500"></i> START</button>
+            <button onclick="navigateTo('learn'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-slate-700 font-medium hover:bg-sky-50"><i class="fa-solid fa-book-open w-6 text-sky-500"></i> LEARN</button>
+            <button onclick="navigateTo('practice'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-slate-700 font-medium hover:bg-sky-50"><i class="fa-solid fa-pen-ruler w-6 text-sky-500"></i> PRACTICE</button>
+            <button onclick="navigateTo('speaking'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-slate-700 font-medium hover:bg-sky-50"><i class="fa-solid fa-microphone w-6 text-sky-500"></i> SPEAKING CHALLENGE</button>
+            <button onclick="navigateTo('reflection'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-slate-700 font-medium hover:bg-sky-50"><i class="fa-solid fa-heart w-6 text-sky-500"></i> REFLECTION</button>
+            <button onclick="navigateTo('score'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-slate-700 font-medium hover:bg-sky-50"><i class="fa-solid fa-trophy w-6 text-sky-500"></i> MY SCORE</button>
+            <button onclick="navigateTo('teacher'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-slate-700 font-medium hover:bg-sky-50"><i class="fa-solid fa-user-gear w-6 text-sky-500"></i> TEACHER DASHBOARD</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- 1. START PAGE -->
+        <section id="start-section" class="page-section transition-all duration-300">
+            <div class="bg-gradient-to-br from-sky-400 via-sky-500 to-blue-600 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden mb-8">
+                <!-- Background decorative shapes -->
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="absolute right-1/3 -bottom-10 w-60 h-60 bg-yellow-300/20 rounded-full blur-3xl"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs sm:text-sm font-semibold rounded-full uppercase tracking-wider border border-white/30">
+                            <i class="fa-solid fa-sparkles mr-1"></i> Interactive English Learning Media
+                        </span>
+                        <h1 class="text-3xl sm:text-5xl font-heading font-extrabold tracking-tight text-white leading-tight">
+                            ABOUT ME <br><span class="text-yellow-300">"Let's Introduce Ourselves!"</span>
+                        </h1>
+                        <p class="text-sky-100 text-sm sm:text-base leading-relaxed max-w-xl">
+                            Welcome, Young Learner! Mari belajar memperkenalkan diri dan berinteraksi secara lisan dalam Bahasa Inggris dengan percaya diri, menyenangkan, dan bermakna!
+                        </p>
+
+                        <!-- Student Form Entry -->
+                        <div class="bg-white/95 backdrop-blur-md p-5 rounded-2xl text-slate-800 shadow-lg max-w-md mt-6 border border-white">
+                            <h3 class="font-heading font-bold text-lg text-sky-900 mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-id-card text-sky-600"></i> Input Data Peserta Didik
+                            </h3>
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Nama Lengkap / Nickname</label>
+                                    <input type="text" id="student-name-input" placeholder="Contoh: Rina Amalia" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:outline-none font-medium text-slate-800">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Kelas</label>
+                                    <select id="student-class-input" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:outline-none font-medium text-slate-800">
+                                        <option value="VII-A">7-A</option>
+                                        <option value="VII-B">7-B</option>
+                                        <option value="VII-C">7-C</option>
+                                        <option value="VII-D">7-D</option>
+                                        <option value="VII-E">7-E</option>
+                                    </select>
+                                </div>
+                                <button onclick="saveStudentInfoAndStart()" class="w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-heading font-bold rounded-xl shadow-md transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-base">
+                                    <i class="fa-solid fa-rocket"></i> START LEARNING
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SVG Classroom Illustration -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md animate-bounce-subtle">
+                            <svg viewBox="0 0 500 400" class="w-full h-auto drop-shadow-2xl">
+                                <!-- Classroom Backdrop -->
+                                <rect x="20" y="20" width="460" height="340" rx="20" fill="#38bdf8" opacity="0.3"/>
+                                <!-- Speech bubbles -->
+                                <g>
+                                    <path d="M 100 80 Q 150 40 200 80 Q 220 120 160 120 L 130 140 L 135 120 Q 80 120 100 80 Z" fill="#ffffff"/>
+                                    <text x="115" y="95" font-family="Fredoka" font-size="16" font-weight="bold" fill="#0284c7">Hello! I'm Andi!</text>
+                                </g>
+                                <g>
+                                    <path d="M 300 60 Q 360 20 420 60 Q 440 100 380 100 L 375 120 L 350 100 Q 280 100 300 60 Z" fill="#fef08a"/>
+                                    <text x="315" y="75" font-family="Fredoka" font-size="15" font-weight="bold" fill="#854d0e">Nice to meet you!</text>
+                                </g>
+                                <!-- Student Characters SVG -->
+                                <!-- Student 1 (Boy) -->
+                                <circle cx="150" cy="210" r="40" fill="#fbcfe8"/>
+                                <rect x="120" y="250" width="60" height="90" rx="15" fill="#0284c7"/>
+                                <circle cx="150" cy="195" r="30" fill="#fde047"/>
+                                <circle cx="140" cy="190" r="4" fill="#1e293b"/>
+                                <circle cx="160" cy="190" r="4" fill="#1e293b"/>
+                                <path d="M 142 205 Q 150 215 158 205" stroke="#1e293b" stroke-width="3" fill="none"/>
+                                <!-- Student 2 (Girl with hijab/glasses) -->
+                                <circle cx="350" cy="210" r="45" fill="#38bdf8"/>
+                                <rect x="320" y="255" width="60" height="85" rx="15" fill="#e11d48"/>
+                                <circle cx="350" cy="195" r="28" fill="#fef3c7"/>
+                                <circle cx="342" cy="192" r="4" fill="#1e293b"/>
+                                <circle cx="358" cy="192" r="4" fill="#1e293b"/>
+                                <path d="M 342 205 Q 350 212 358 205" stroke="#1e293b" stroke-width="3" fill="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Objective Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center font-bold text-xl mb-4">1</div>
+                    <h4 class="font-heading font-bold text-lg text-slate-800 mb-2">Memahami (Understand)</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Mengenal ungkapan *Greetings*, *Self Introduction*, dan *Asking Personal Info* beserta pengucapannya secara audio.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold text-xl mb-4">2</div>
+                    <h4 class="font-heading font-bold text-lg text-slate-800 mb-2">Mengaplikasi (Apply)</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Mengerjakan kuis interaktif 10+ soal dan mempraktikkan dialog berbicara lisan (*Speaking Challenge*).</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center font-bold text-xl mb-4">3</div>
+                    <h4 class="font-heading font-bold text-lg text-slate-800 mb-2">Merefleksi (Reflect)</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">Menilai sejauh mana rasa percaya diri dan pemahaman materi *About Me* secara jujur dan berkesadaran.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. LEARN PAGE -->
+        <section id="learn-section" class="page-section hidden transition-all duration-300">
+            <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-heading font-bold text-slate-800">Materi Interaktif: About Me</h2>
+                    <p class="text-slate-600 text-sm">Klik setiap kartu untuk mendengarkan pelafalan (*Audio Speaking*) dan melihat contoh kalimat.</p>
+                </div>
+                <!-- Filter Tabs for Learning Cards -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterLearnCards('all')" class="learn-tab-btn active px-3 py-1.5 rounded-xl text-xs font-semibold bg-sky-600 text-white shadow-sm">Semua</button>
+                    <button onclick="filterLearnCards('greetings')" class="learn-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 hover:bg-slate-100 border">Greeting</button>
+                    <button onclick="filterLearnCards('personal')" class="learn-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 hover:bg-slate-100 border">Personal Info</button>
+                    <button onclick="filterLearnCards('questions')" class="learn-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 hover:bg-slate-100 border">Expressions</button>
+                    <button onclick="filterLearnCards('dialogue')" class="learn-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-white text-slate-600 hover:bg-slate-100 border">Pair Dialogs</button>
+                </div>
+            </div>
+
+            <!-- CARDS GRID -->
+            <div id="learn-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+
+                <!-- CARD 1: GREETING -->
+                <div class="learn-card group bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition" data-category="greetings">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-hand-wave"></i>
+                            </span>
+                            <h3 class="font-heading font-bold text-xl text-slate-800">CARD 1 – GREETING</h3>
+                        </div>
+                        <span class="text-xs font-semibold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-full border border-amber-200">Salam</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-3">Sapaan awal saat bertemu teman atau guru:</p>
+
+                    <div class="space-y-2.5">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 hover:bg-sky-50 rounded-2xl transition border border-slate-100">
+                            <div>
+                                <p class="font-bold text-sky-900 text-base">Hello! / Hi!</p>
+                                <p class="text-xs text-slate-500">Halo / Hai</p>
+                            </div>
+                            <div class="flex gap-1">
+                                <button onclick="speakText('Hello! Hi!')" class="p-2 bg-sky-500 hover:bg-sky-600 text-white rounded-xl shadow-sm transition" title="Listen Audio">
+                                    <i class="fa-solid fa-volume-high text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 hover:bg-sky-50 rounded-2xl transition border border-slate-100">
+                            <div>
+                                <p class="font-bold text-sky-900 text-base">Good morning! / Good afternoon!</p>
+                                <p class="text-xs text-slate-500">Selamat pagi / Selamat siang</p>
+                            </div>
+                            <button onclick="speakText('Good morning! Good afternoon!')" class="p-2 bg-sky-500 hover:bg-sky-600 text-white rounded-xl shadow-sm transition">
+                                <i class="fa-solid fa-volume-high text-xs"></i>
+                            </button>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 hover:bg-sky-50 rounded-2xl transition border border-slate-100">
+                            <div>
+                                <p class="font-bold text-sky-900 text-base">Nice to meet you.</p>
+                                <p class="text-xs text-slate-500">Senang bertemu denganmu.</p>
+                            </div>
+                            <button onclick="speakText('Nice to meet you.')" class="p-2 bg-sky-500 hover:bg-sky-600 text-white rounded-xl shadow-sm transition">
+                                <i class="fa-solid fa-volume-high text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2: PERSONAL INFORMATION -->
+                <div class="learn-card group bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition" data-category="personal">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <h3 class="font-heading font-bold text-xl text-slate-800">CARD 2 – PERSONAL INFO</h3>
+                        </div>
+                        <span class="text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full border border-blue-200">Kosakata</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-3">Komponen informasi diri yang umum disampaikan:</p>
+
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-signature text-sky-500"></i>
+                            <span><b>Name</b> (Nama)</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-cake-candles text-sky-500"></i>
+                            <span><b>Age</b> (Usia)</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-sky-500"></i>
+                            <span><b>Address / City</b> (Alamat/Kota)</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-gamepad text-sky-500"></i>
+                            <span><b>Hobby</b> (Hobi)</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-utensils text-sky-500"></i>
+                            <span><b>Favorite food</b> (Makanan)</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-book text-sky-500"></i>
+                            <span><b>Favorite subject</b> (Mapel)</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-people-roof text-sky-500"></i>
+                            <span><b>Family</b> (Keluarga)</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-2">
+                            <i class="fa-solid fa-smile text-sky-500"></i>
+                            <span><b>Personality</b> (Sifat)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3: USEFUL EXPRESSIONS (QUESTIONS) -->
+                <div class="learn-card group bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition" data-category="questions">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-circle-question"></i>
+                            </span>
+                            <h3 class="font-heading font-bold text-xl text-slate-800">CARD 3 – ASKING INFO</h3>
+                        </div>
+                        <span class="text-xs font-semibold bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">Pertanyaan</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-emerald-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">What's your name?</span>
+                            <button onclick="speakText('What is your name?')" class="p-1.5 bg-emerald-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-emerald-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">How old are you?</span>
+                            <button onclick="speakText('How old are you?')" class="p-1.5 bg-emerald-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-emerald-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">Where do you live?</span>
+                            <button onclick="speakText('Where do you live?')" class="p-1.5 bg-emerald-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-emerald-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">What is your hobby?</span>
+                            <button onclick="speakText('What is your hobby?')" class="p-1.5 bg-emerald-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-emerald-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">What is your favorite food?</span>
+                            <button onclick="speakText('What is your favorite food?')" class="p-1.5 bg-emerald-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 4: ANSWERING -->
+                <div class="learn-card group bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition" data-category="questions">
+                    <div class="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-comment-dots"></i>
+                            </span>
+                            <h3 class="font-heading font-bold text-xl text-slate-800">CARD 4 – ANSWERING</h3>
+                        </div>
+                        <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full border border-purple-200">Jawaban</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-purple-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">My name is Budi / I'm Budi.</span>
+                            <button onclick="speakText('My name is Budi. I am Budi.')" class="p-1.5 bg-purple-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-purple-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">I am 13 years old.</span>
+                            <button onclick="speakText('I am 13 years old.')" class="p-1.5 bg-purple-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-purple-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">I live in Bandung / Jakarta.</span>
+                            <button onclick="speakText('I live in Bandung.')" class="p-1.5 bg-purple-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-purple-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">My hobby is swimming / reading.</span>
+                            <button onclick="speakText('My hobby is swimming.')" class="p-1.5 bg-purple-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 hover:bg-purple-50 rounded-xl transition">
+                            <span class="font-medium text-slate-800 text-sm">My favorite food is fried rice.</span>
+                            <button onclick="speakText('My favorite food is fried rice.')" class="p-1.5 bg-purple-500 text-white rounded-lg text-xs"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 5: PAIR DIALOGUE EXAMPLE -->
+                <div class="learn-card lg:col-span-2 group bg-gradient-to-r from-sky-50 to-indigo-50 rounded-3xl p-6 border border-sky-200 shadow-sm" data-category="dialogue">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-heading font-bold text-xl text-sky-900 flex items-center gap-2">
+                            <i class="fa-solid fa-user-group text-sky-600"></i> CARD 5 – SAMPLE PAIR CONVERSATION
+                        </h3>
+                        <button onclick="playFullDialogue()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-xl shadow-md transition flex items-center gap-2">
+                            <i class="fa-solid fa-play"></i> Listen Full Conversation
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="p-3 bg-white rounded-2xl border border-sky-100 flex items-start space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold text-xs shrink-0">A</span>
+                            <div>
+                                <p class="font-semibold text-slate-800">Ahmad: "Hello! My name is Ahmad. What is your name?"</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Halo! Nama saya Ahmad. Siapa namamu?</p>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-white rounded-2xl border border-sky-100 flex items-start space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center font-bold text-xs shrink-0">B</span>
+                            <div>
+                                <p class="font-semibold text-slate-800">Siti: "Hi Ahmad! I'm Siti. Nice to meet you!"</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Hai Ahmad! Saya Siti. Senang bertemu denganmu!</p>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-white rounded-2xl border border-sky-100 flex items-start space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold text-xs shrink-0">A</span>
+                            <div>
+                                <p class="font-semibold text-slate-800">Ahmad: "Nice to meet you too. How old are you?"</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Senang bertemu denganmu juga. Berapa usiamu?</p>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-white rounded-2xl border border-sky-100 flex items-start space-x-3">
+                            <span class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center font-bold text-xs shrink-0">B</span>
+                            <div>
+                                <p class="font-semibold text-slate-800">Siti: "I'm 13 years old. I live in Lingga. What about you?"</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Saya 13 tahun. Saya tinggal di Lingga. Bagaimana denganmu?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. PRACTICE PAGE -->
+        <section id="practice-section" class="page-section hidden transition-all duration-300">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md mb-6">
+                <!-- Header Practice -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-slate-100 pb-4">
+                    <div>
+                        <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full uppercase">Practice Mode</span>
+                        <h2 class="text-2xl sm:text-3xl font-heading font-bold text-slate-800 mt-1">Latihan Interaktif (10 Soal)</h2>
+                    </div>
+                    <div class="flex items-center space-x-4 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-200">
+                        <div class="text-center">
+                            <span class="text-xs text-slate-500 block">Soal</span>
+                            <span id="current-q-num" class="font-heading font-bold text-sky-600 text-lg">1</span><span class="text-slate-400">/10</span>
+                        </div>
+                        <div class="h-8 w-px bg-slate-200"></div>
+                        <div class="text-center">
+                            <span class="text-xs text-slate-500 block">Skor</span>
+                            <span id="quiz-score-display" class="font-heading font-bold text-emerald-600 text-lg">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mb-8">
+                    <div id="quiz-progress-bar" class="bg-gradient-to-r from-sky-400 to-emerald-500 h-full w-10 transition-all duration-300"></div>
+                </div>
+
+                <!-- QUIZ CONTAINER -->
+                <div id="quiz-container" class="min-h-[300px]">
+                    <!-- Questions are dynamically rendered via JS -->
+                </div>
+
+                <!-- Quiz Navigation / Action Buttons -->
+                <div class="mt-8 flex justify-between items-center border-t border-slate-100 pt-4">
+                    <button id="prev-btn" onclick="prevQuestion()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition disabled:opacity-50" disabled>
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Sebelumnya
+                    </button>
+                    <button id="next-btn" onclick="nextQuestion()" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold rounded-xl text-sm transition shadow-md">
+                        Selanjutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SPEAKING CHALLENGE PAGE -->
+        <section id="speaking-section" class="page-section hidden transition-all duration-300">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Left: Speech Practice Studio -->
+                <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-md">
+                    <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full uppercase">Speaking Challenge</span>
+                    <h2 class="text-2xl font-heading font-bold text-slate-800 mt-2 mb-2">Voice Recording & Pronunciation Studio</h2>
+                    <p class="text-slate-600 text-sm mb-6">Pilih kalimat di bawah, dengarkan contoh, lalu tekan mikrofon untuk mencoba mengucapkan secara lisan!</p>
+
+                    <!-- Speech Selector -->
+                    <div class="space-y-3 mb-6">
+                        <label class="block text-xs font-bold text-slate-600 uppercase">Pilih Kalimat untuk Dilatih:</label>
+                        <select id="speaking-sentence-select" onchange="updateSpeakingTarget()" class="w-full p-3 rounded-2xl border border-slate-300 font-medium text-slate-800 focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                            <option value="Hello, my name is Alex. Nice to meet you.">1. Hello, my name is Alex. Nice to meet you.</option>
+                            <option value="I am thirteen years old.">2. I am thirteen years old.</option>
+                            <option value="I live in Bandung with my family.">3. I live in Bandung with my family.</option>
+                            <option value="My hobby is playing basketball.">4. My hobby is playing basketball.</option>
+                            <option value="My favorite food is fried chicken.">5. My favorite food is fried chicken.</option>
+                        </select>
+                    </div>
+
+                    <!-- Target Display Card -->
+                    <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl p-6 text-white text-center shadow-lg mb-6 relative overflow-hidden">
+                        <div class="text-xs uppercase tracking-wider font-semibold opacity-80 mb-1">Target Kalimat</div>
+                        <p id="target-sentence-text" class="text-xl sm:text-2xl font-heading font-bold leading-snug">"Hello, my name is Alex. Nice to meet you."</p>
+                        
+                        <div class="mt-4 flex justify-center gap-3">
+                            <button onclick="listenTargetSentence()" class="px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white rounded-xl text-xs font-bold transition flex items-center gap-2">
+                                <i class="fa-solid fa-volume-high"></i> Dengarkan Pelafalan
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Voice Recording Widget -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
+                        <div id="mic-status" class="text-sm font-semibold text-slate-600 mb-4">Tekan tombol mikrofon untuk mulai berbicara</div>
+
+                        <!-- Big Mic Button -->
+                        <button id="mic-btn" onclick="toggleSpeechRecognition()" class="w-20 h-20 rounded-full bg-purple-600 hover:bg-purple-700 text-white text-2xl shadow-xl transition transform active:scale-95 flex items-center justify-center mx-auto mb-4 relative">
+                            <i id="mic-icon" class="fa-solid fa-microphone"></i>
+                            <span id="mic-pulse" class="absolute inset-0 rounded-full bg-purple-400 animate-ping opacity-0"></span>
+                        </button>
+
+                        <!-- Recognized Result Box -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-left min-h-[70px] mb-4">
+                            <span class="text-xs text-slate-400 block font-semibold uppercase mb-1">Hasil Suaramu:</span>
+                            <p id="recognized-text" class="text-slate-800 font-medium italic text-sm">Belum ada rekaman suara...</p>
+                        </div>
+
+                        <!-- Score / Feedback Badge -->
+                        <div id="speaking-feedback" class="hidden p-3 rounded-xl bg-emerald-100 text-emerald-800 font-heading font-bold text-sm">
+                            <i class="fa-solid fa-circle-check mr-1 text-emerald-600"></i> Great Job! Pengucapanmu sangat jelas!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Self Digital ID Card Builder -->
+                <div class="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-md">
+                    <span class="px-3 py-1 bg-sky-100 text-sky-700 text-xs font-bold rounded-full uppercase">Digital ID Card Generator</span>
+                    <h2 class="text-xl font-heading font-bold text-slate-800 mt-2 mb-2">Buat Kartu Perkenalanmu</h2>
+                    <p class="text-xs text-slate-500 mb-4">Isi data di bawah untuk membuat *Digital ID Card* dan teks perkenalan otomatis!</p>
+
+                    <form id="id-card-form" onsubmit="generateIDCard(event)" class="space-y-3 text-xs">
+                        <div>
+                            <label class="font-bold text-slate-600">Nama Lengkap</label>
+                            <input type="text" id="id-name" required placeholder="Budi Santoso" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium text-slate-800 mt-1">
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="font-bold text-slate-600">Umur (Age)</label>
+                                <input type="number" id="id-age" required placeholder="13" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium text-slate-800 mt-1">
+                            </div>
+                            <div>
+                                <label class="font-bold text-slate-600">Kota (City)</label>
+                                <input type="text" id="id-city" required placeholder="Surabaya" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium text-slate-800 mt-1">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="font-bold text-slate-600">Hobi</label>
+                                <input type="text" id="id-hobby" required placeholder="Reading books" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium text-slate-800 mt-1">
+                            </div>
+                            <div>
+                                <label class="font-bold text-slate-600">Makanan Favorit</label>
+                                <input type="text" id="id-food" required placeholder="Nasi Goreng" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium text-slate-800 mt-1">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold rounded-xl shadow transition mt-2">
+                            <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Generate ID Badge & Speech
+                        </button>
+                    </form>
+
+                    <!-- Preview Badge Card -->
+                    <div id="id-card-preview" class="mt-6 p-5 rounded-2xl bg-gradient-to-br from-slate-900 via-sky-900 to-indigo-950 text-white shadow-xl relative overflow-hidden border border-sky-400/30">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-widest text-sky-400">STUDENT IDENTIFICATION</span>
+                                <h4 id="preview-name" class="font-heading font-bold text-lg text-white">Student Name</h4>
+                            </div>
+                            <span class="w-8 h-8 rounded-full bg-yellow-400 text-slate-900 flex items-center justify-center font-bold text-xs">7</span>
+                        </div>
+                        <div class="text-xs space-y-1 text-sky-100 mb-4">
+                            <p><i class="fa-solid fa-cake-candles text-sky-400 w-4"></i> Age: <span id="preview-age">13</span> years old</p>
+                            <p><i class="fa-solid fa-location-dot text-sky-400 w-4"></i> City: <span id="preview-city">Kota</span></p>
+                            <p><i class="fa-solid fa-gamepad text-sky-400 w-4"></i> Hobby: <span id="preview-hobby">Hobi</span></p>
+                            <p><i class="fa-solid fa-utensils text-sky-400 w-4"></i> Favorite Food: <span id="preview-food">Food</span></p>
+                        </div>
+                        <button onclick="speakFullSelfIntro()" class="w-full py-2 bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold rounded-lg text-xs transition flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-volume-high"></i> Bacakan Seluruh Teks Perkenalan Ini!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. REFLECTION PAGE -->
+        <section id="reflection-section" class="page-section hidden transition-all duration-300">
+            <div class="max-w-3xl mx-auto bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-md">
+                <div class="text-center mb-8">
+                    <span class="px-3 py-1 bg-pink-100 text-pink-700 text-xs font-bold rounded-full uppercase">Refleksi Pembelajaran Berkesadaran</span>
+                    <h2 class="text-2xl sm:text-3xl font-heading font-bold text-slate-800 mt-2">Reflection & Self-Assessment</h2>
+                    <p class="text-slate-600 text-sm mt-1">Sampaikan kesan dan tingkat kepercayaan dirimu setelah mengikuti pembelajaran topik "About Me".</p>
+                </div>
+
+                <form id="reflection-form" onsubmit="submitReflection(event)" class="space-y-6">
+                    <!-- Rating 1: Confidence -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <label class="block font-heading font-bold text-slate-800 text-base mb-2">1. Seberapa percaya diri kamu dalam memperkenalkan diri dalam Bahasa Inggris sekarang?</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                            <label class="cursor-pointer border rounded-2xl p-3 bg-white hover:border-sky-500 transition has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50">
+                                <input type="radio" name="confidence" value="Sangat Ragu" required class="sr-only">
+                                <span class="text-2xl block mb-1">😟</span>
+                                <span class="text-xs font-bold text-slate-700">Sangat Ragu</span>
+                            </label>
+                            <label class="cursor-pointer border rounded-2xl p-3 bg-white hover:border-sky-500 transition has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50">
+                                <input type="radio" name="confidence" value="Cukup Yakin" class="sr-only">
+                                <span class="text-2xl block mb-1">😐</span>
+                                <span class="text-xs font-bold text-slate-700">Cukup Yakin</span>
+                            </label>
+                            <label class="cursor-pointer border rounded-2xl p-3 bg-white hover:border-sky-500 transition has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50">
+                                <input type="radio" name="confidence" value="Yakin" class="sr-only">
+                                <span class="text-2xl block mb-1">🙂</span>
+                                <span class="text-xs font-bold text-slate-700">Yakin</span>
+                            </label>
+                            <label class="cursor-pointer border rounded-2xl p-3 bg-white hover:border-sky-500 transition has-[:checked]:border-sky-600 has-[:checked]:bg-sky-50">
+                                <input type="radio" name="confidence" value="Sangat Yakin" class="sr-only">
+                                <span class="text-2xl block mb-1">🤩</span>
+                                <span class="text-xs font-bold text-slate-700">Sangat Yakin</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Open Text 1 -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <label class="block font-heading font-bold text-slate-800 text-base mb-2">2. Bagian materi apa yang paling kamu sukai atau paling mudah dipahami?</label>
+                        <textarea id="reflection-like" rows="3" required placeholder="Contoh: Saya paling suka bagian berkenalan tentang hobi dan makanan favorit karena menyenangkan..." class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-sky-500 focus:outline-none"></textarea>
+                    </div>
+
+                    <!-- Open Text 2 -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <label class="block font-heading font-bold text-slate-800 text-base mb-2">3. Apa tantangan utama yang kamu rasakan saat berbicara Bahasa Inggris?</label>
+                        <textarea id="reflection-challenge" rows="3" required placeholder="Contoh: Masih sedikit gugup pada pelafalan (pronunciation) huruf tertentu..." class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-sky-500 focus:outline-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-bold rounded-2xl shadow-lg transition text-base">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Simpan Refleksi Pembelajaran
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 6. MY SCORE PAGE -->
+        <section id="score-section" class="page-section hidden transition-all duration-300">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Summary Card -->
+                <div class="bg-gradient-to-br from-indigo-600 via-sky-600 to-blue-700 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-6 relative z-10">
+                        <div>
+                            <span class="px-3 py-1 bg-white/20 backdrop-blur-md text-xs font-bold rounded-full uppercase">Laporan Hasil Belajar</span>
+                            <h2 id="score-student-name" class="text-3xl font-heading font-bold mt-1">Nama Peserta Didik</h2>
+                            <p id="score-student-class" class="text-sky-200 text-sm">Kelas VII</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 text-center border border-white/20 min-w-[140px]">
+                            <span class="text-xs uppercase font-semibold text-sky-200 block">Total Skor Kuis</span>
+                            <span id="final-score-val" class="text-4xl font-heading font-extrabold text-yellow-300">0</span><span class="text-sm font-semibold">/100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Breakdown Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+                        <h3 class="font-heading font-bold text-lg text-slate-800 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-sky-600"></i> Status Kelengkapan Aktivitas
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-700">Materi Pelajaran (Learn)</span>
+                                <span id="status-learn" class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full"><i class="fa-solid fa-check"></i> Selesai</span>
+                            </li>
+                            <li class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-700">Kuis Interaktif 10 Soal</span>
+                                <span id="status-quiz" class="px-2.5 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full">Belum Selesai</span>
+                            </li>
+                            <li class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-700">Speaking Challenge Studio</span>
+                                <span id="status-speaking" class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full"><i class="fa-solid fa-check"></i> Aktif Dilatih</span>
+                            </li>
+                            <li class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-700">Refleksi Berkesadaran</span>
+                                <span id="status-reflection" class="px-2.5 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full">Belum Mengisi</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+                        <h3 class="font-heading font-bold text-lg text-slate-800 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-award text-yellow-500"></i> Pencapaian Lencana (Badges)
+                        </h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 bg-slate-50 rounded-2xl border text-center">
+                                <div class="text-3xl mb-1">🗣️</div>
+                                <span class="font-heading font-bold text-xs text-slate-800 block">Bold Speaker</span>
+                                <span class="text-[10px] text-slate-500">Mencoba latihan lisan</span>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-2xl border text-center">
+                                <div class="text-3xl mb-1">⭐</div>
+                                <span class="font-heading font-bold text-xs text-slate-800 block">Grammar Master</span>
+                                <span class="text-[10px] text-slate-500">Kuis > 80</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. TEACHER DASHBOARD PAGE -->
+        <section id="teacher-section" class="page-section hidden transition-all duration-300">
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 border-b border-slate-100 pb-4">
+                    <div>
+                        <span class="px-3 py-1 bg-sky-100 text-sky-800 text-xs font-bold rounded-full uppercase">Teacher Control Panel</span>
+                        <h2 class="text-2xl font-heading font-bold text-slate-800 mt-1">Dashboard Guru & Rekap Nilai</h2>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="exportToCSV()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow">
+                            <i class="fa-solid fa-file-csv"></i> Download CSV (Google Sheets)
+                        </button>
+                        <button onclick="clearLocalStorageData()" class="px-3 py-2 bg-rose-50 text-rose-600 hover:bg-rose-100 rounded-xl text-xs font-bold transition">
+                            <i class="fa-solid fa-trash-can"></i> Reset Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Table of Local Storage Student Records -->
+                <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                    <table class="w-full text-left text-sm text-slate-600">
+                        <thead class="bg-slate-50 text-xs uppercase text-slate-500 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="px-4 py-3">Nama</th>
+                                <th class="px-4 py-3">Kelas</th>
+                                <th class="px-4 py-3">Skor Kuis</th>
+                                <th class="px-4 py-3">Refleksi Ketercapaian</th>
+                                <th class="px-4 py-3">Status Refleksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teacher-table-body" class="divide-y divide-slate-100">
+                            <!-- JS auto populates stored student data -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GOOGLE DOCS MODAL -->
+    <div id="docs-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-heading font-bold text-xl text-blue-700 flex items-center gap-2">
+                    <i class="fa-solid fa-file-word"></i> Google Docs Exporter
+                </h3>
+                <button onclick="closeModal('docs-modal')" class="text-slate-400 hover:text-slate-600 text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-xs text-slate-600">Berikut adalah ringkasan format laporan hasil refleksi dan perkenalan peserta didik yang dapat disalin (*Copy*) ke Google Docs atau Word:</p>
+
+            <textarea id="docs-export-text" rows="8" readonly class="w-full p-3 bg-slate-50 rounded-xl border border-slate-300 text-xs font-mono text-slate-800 leading-relaxed"></textarea>
+
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="copyToClipboard('docs-export-text')" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-copy"></i> Copy Printable Text
+                </button>
+                <button onclick="closeModal('docs-modal')" class="px-4 py-2 bg-slate-100 text-slate-600 rounded-xl text-xs font-semibold">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GOOGLE SHEETS MODAL -->
+    <div id="sheets-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-heading font-bold text-xl text-emerald-700 flex items-center gap-2">
+                    <i class="fa-solid fa-file-excel"></i> Google Sheets & CSV Integration
+                </h3>
+                <button onclick="closeModal('sheets-modal')" class="text-slate-400 hover:text-slate-600 text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-xs text-slate-600">Unduh data rekapitulasi nilai dan refleksi siswa dalam format CSV untuk diimpor langsung ke Google Sheets:</p>
+
+            <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-900 space-y-2">
+                <p><b>Petunjuk Impor Google Sheets:</b></p>
+                <ol class="list-decimal pl-4 space-y-1">
+                    <li>Klik tombol <b>Download CSV Data</b> di bawah.</li>
+                    <li>Buka Google Sheets di browser Anda.</li>
+                    <li>Pilih <b>File -> Import -> Upload</b> file CSV yang telah terunduh.</li>
+                </ol>
+            </div>
+
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="exportToCSV()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-download"></i> Download CSV Data
+                </button>
+                <button onclick="closeModal('sheets-modal')" class="px-4 py-2 bg-slate-100 text-slate-600 rounded-xl text-xs font-semibold">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-4 mt-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p>Media Pembelajaran Interaktif Bahasa Inggris SMP Kelas 7 - Kurikulum Merdeka</p>
+            <p class="font-medium text-slate-600">Topik: ABOUT ME ("Let's Introduce Ourselves!")</p>
+        </div>
+    </footer>
+
+    <script>
+        // GLOBAL STATE
+        let studentData = {
+            name: "Peserta Didik",
+            class: "VII-A",
+            score: 0,
+            quizCompleted: false,
+            speakingTried: false,
+            reflectionCompleted: false,
+            reflectionDetails: {
+                confidence: "-",
+                like: "-",
+                challenge: "-"
+            }
+        };
+
+        // QUIZ QUESTIONS DATASET (10+ Items, Multi-format)
+        const quizQuestions = [
+            {
+                id: 1,
+                type: "mc",
+                question: "What is the best expression to respond to 'What is your name?'",
+                options: [
+                    "A. I am 13 years old.",
+                    "B. My name is Rina.",
+                    "C. I live in Lingga.",
+                    "D. My hobby is swimming."
+                ],
+                correct: 1,
+                explanation: "Untuk menjawab pertanyaan nama ('What is your name?'), ungkapan yang tepat adalah 'My name is...'."
+            },
+            {
+                id: 2,
+                type: "fill",
+                question: "Lengkapi kalimat sapaan ini: 'Nice to ________ you.'",
+                correct: "meet",
+                explanation: "Ungkapan lengkap saat baru berkenalan adalah 'Nice to meet you' (Senang bertemu denganmu)."
+            },
+            {
+                id: 3,
+                type: "arrange",
+                question: "Susun kata-kata berikut menjadi kalimat yang benar: [ live / I / Bandung / in ]",
+                words: ["I", "live", "in", "Bandung"],
+                correctSequence: "I live in Bandung",
+                explanation: "Susunan struktur tempat tinggal yang tepat adalah: Subject + Verb + Preposition + Place (I live in Bandung)."
+            },
+            {
+                id: 4,
+                type: "mc",
+                question: "Seseorang bertanya: 'How old are you?' Pertanyaan tersebut bertujuan untuk menanyakan...",
+                options: [
+                    "A. Hobi / Kegemaran",
+                    "B. Alamat rumah",
+                    "C. Usia / Umur",
+                    "D. Makanan favorit"
+                ],
+                correct: 2,
+                explanation: "'How old are you?' digunakan untuk menanyakan usia seseorang."
+            },
+            {
+                id: 5,
+                type: "mc",
+                question: "Ahmad: 'Nice to meet you, Siti.' <br>Siti: '___________________'",
+                options: [
+                    "A. Good morning.",
+                    "B. Nice to meet you too.",
+                    "C. I am 12 years old.",
+                    "D. I like fried rice."
+                ],
+                correct: 1,
+                explanation: "Jawaban paling tepat untuk 'Nice to meet you' adalah 'Nice to meet you too'."
+            },
+            {
+                id: 6,
+                type: "fill",
+                question: "Lengkapi ungkapan hobi ini: 'My hobby ________ reading comic books.' (is / are)",
+                correct: "is",
+                explanation: "Karena 'hobby' bernilai tunggal (singular), kita menggunakan to be 'is'."
+            },
+            {
+                id: 7,
+                type: "mc",
+                question: "Manakah kalimat yang tepat untuk menyatakan makanan favorit?",
+                options: [
+                    "A. I live in Jakarta.",
+                    "B. My favorite food is fried noodles.",
+                    "C. What is your favorite subject?",
+                    "D. I am a student."
+                ],
+                correct: 1,
+                explanation: "'My favorite food is...' digunakan untuk mengungkapkan makanan kesukaan."
+            },
+            {
+                id: 8,
+                type: "arrange",
+                question: "Susun kata berikut: [ favorite / My / subject / English / is ]",
+                words: ["My", "favorite", "subject", "is", "English"],
+                correctSequence: "My favorite subject is English",
+                explanation: "Susunan yang benar: My favorite subject is English."
+            },
+            {
+                id: 9,
+                type: "mc",
+                question: "'Where do you live?' Pertanyaan ini menanyakan tentang...",
+                options: [
+                    "A. Nama lengkap",
+                    "B. Tempat tinggal / alamat",
+                    "C. Mata pelajaran favorit",
+                    "D. Usia"
+                ],
+                correct: 1,
+                explanation: "'Where do you live?' menanyakan tempat tinggal atau kota domisili."
+            },
+            {
+                id: 10,
+                type: "mc",
+                question: "Apabila kamu bertemu guru pada pukul 08.00 pagi, sapaan yang tepat dalam Bahasa Inggris adalah...",
+                options: [
+                    "A. Good afternoon, Teacher.",
+                    "B. Good night, Teacher.",
+                    "C. Good morning, Teacher.",
+                    "D. Good evening, Teacher."
+                ],
+                correct: 2,
+                explanation: "Pada pukul 08.00 pagi, gunakan sapaan 'Good morning'."
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let userAnswers = {};
+
+        window.onload = function() {
+            // Load persistent student data from LocalStorage
+            loadStudentData();
+            renderQuizQuestion();
+            updateScoreDashboard();
+        };
+
+        function navigateTo(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(sec => {
+                sec.classList.add('hidden');
+            });
+            // Show target section
+            const target = document.getElementById(sectionId + '-section');
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            // Update Navigation active state
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-sky-600', 'bg-sky-50');
+            });
+            const activeNav = document.getElementById('nav-' + sectionId);
+            if (activeNav) {
+                activeNav.classList.add('text-sky-600', 'bg-sky-50');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function saveStudentInfoAndStart() {
+            const name = document.getElementById('student-name-input').value.trim();
+            const clazz = document.getElementById('student-class-input').value;
+
+            if (name) {
+                studentData.name = name;
+                studentData.class = clazz;
+                saveStudentData();
+                playToneSound('success');
+                navigateTo('learn');
+            } else {
+                alert('Silakan masukkan nama Anda terlebih dahulu!');
+            }
+        }
+
+        function saveStudentData() {
+            localStorage.setItem('smp_about_me_student', JSON.stringify(studentData));
+            updateScoreDashboard();
+        }
+
+        function loadStudentData() {
+            const saved = localStorage.getItem('smp_about_me_student');
+            if (saved) {
+                try {
+                    studentData = JSON.parse(saved);
+                    document.getElementById('student-name-input').value = studentData.name || '';
+                    document.getElementById('student-class-input').value = studentData.class || 'VII-A';
+                } catch(e) {}
+            }
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop active speech
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9; // Slightly slower for Class 7 SMP learners
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Fitur suara tidak didukung di browser ini.');
+            }
+        }
+
+        function playFullDialogue() {
+            const lines = [
+                "Hello! My name is Ahmad. What is your name?",
+                "Hi Ahmad! I'm Siti. Nice to meet you!",
+                "Nice to meet you too. How old are you?",
+                "I'm 13 years old. I live in Lingga. What about you?"
+            ];
+
+            let index = 0;
+            function speakNext() {
+                if (index < lines.length) {
+                    const utterance = new SpeechSynthesisUtterance(lines[index]);
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.9;
+                    utterance.onend = function() {
+                        index++;
+                        speakNext();
+                    };
+                    window.speechSynthesis.speak(utterance);
+                }
+            }
+            window.speechSynthesis.cancel();
+            speakNext();
+        }
+
+        function filterLearnCards(category) {
+            document.querySelectorAll('.learn-tab-btn').forEach(btn => btn.classList.remove('bg-sky-600', 'text-white'));
+            event.target.classList.add('bg-sky-600', 'text-white');
+
+            const cards = document.querySelectorAll('.learn-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        function renderQuizQuestion() {
+            const q = quizQuestions[currentQuestionIdx];
+            document.getElementById('current-q-num').innerText = currentQuestionIdx + 1;
+            document.getElementById('quiz-progress-bar').style.width = ((currentQuestionIdx + 1) / quizQuestions.length * 100) + '%';
+
+            const container = document.getElementById('quiz-container');
+            let html = `
+                <div class="mb-4">
+                    <span class="text-xs font-bold text-sky-600 uppercase tracking-wider block mb-1">Soal #${q.id}</span>
+                    <h3 class="font-heading font-bold text-xl text-slate-800">${q.question}</h3>
+                </div>
+            `;
+
+            if (q.type === 'mc') {
+                html += `<div class="space-y-2.5">`;
+                q.options.forEach((opt, idx) => {
+                    const isSelected = userAnswers[q.id] === idx;
+                    html += `
+                        <button onclick="selectOption(${idx})" class="w-full text-left p-3.5 rounded-2xl border transition flex items-center justify-between ${isSelected ? 'border-sky-500 bg-sky-50 font-semibold text-sky-900' : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700'}">
+                            <span>${opt}</span>
+                            ${isSelected ? '<i class="fa-solid fa-circle-check text-sky-600"></i>' : ''}
+                        </button>
+                    `;
+                });
+                html += `</div>`;
+            } else if (q.type === 'fill') {
+                const val = userAnswers[q.id] || '';
+                html += `
+                    <div class="space-y-3">
+                        <input type="text" id="fill-input" value="${val}" placeholder="Ketik jawabanmu di sini..." onchange="saveFillAnswer(this.value)" class="w-full p-3.5 rounded-2xl border border-slate-300 font-medium text-slate-800 focus:ring-2 focus:ring-sky-500 focus:outline-none">
+                        <p class="text-xs text-slate-500">*Gunakan huruf kecil/sesuai konteks kalimat Bahasa Inggris.</p>
+                    </div>
+                `;
+            } else if (q.type === 'arrange') {
+                const currentArrangement = userAnswers[q.id] || [];
+                html += `
+                    <div class="space-y-4">
+                        <div id="word-pool" class="flex flex-wrap gap-2 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                            ${q.words.map(w => `<button onclick="toggleWordArrange('${w}')" class="px-3 py-2 bg-white rounded-xl border border-slate-300 text-sm font-semibold hover:bg-sky-50 hover:border-sky-400 transition">${w}</button>`).join('')}
+                        </div>
+                        <div class="p-4 bg-sky-50 rounded-2xl border border-sky-200 min-h-[60px]">
+                            <span class="text-xs text-sky-600 font-bold block mb-1">Susunan Jawabanmu:</span>
+                            <p class="font-heading font-bold text-sky-900 text-lg">${currentArrangement.join(' ')}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // If question has been answered, display feedback
+            if (userAnswers[q.id] !== undefined) {
+                const feedback = checkSingleAnswer(q);
+                html += `
+                    <div class="mt-4 p-4 rounded-2xl ${feedback.isCorrect ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-rose-50 text-rose-800 border border-rose-200'} text-xs">
+                        <p class="font-bold text-sm mb-1">${feedback.isCorrect ? '✨ Benar!' : '❌ Belum Tepat'}</p>
+                        <p>${q.explanation}</p>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+
+            // Nav buttons state
+            document.getElementById('prev-btn').disabled = currentQuestionIdx === 0;
+            document.getElementById('next-btn').innerText = currentQuestionIdx === quizQuestions.length - 1 ? 'Selesai & Lihat Skor' : 'Selanjutnya';
+        }
+
+        function selectOption(idx) {
+            const q = quizQuestions[currentQuestionIdx];
+            userAnswers[q.id] = idx;
+            playToneSound('click');
+            renderQuizQuestion();
+            calculateScore();
+        }
+
+        function saveFillAnswer(val) {
+            const q = quizQuestions[currentQuestionIdx];
+            userAnswers[q.id] = val.trim().toLowerCase();
+            renderQuizQuestion();
+            calculateScore();
+        }
+
+        function toggleWordArrange(word) {
+            const q = quizQuestions[currentQuestionIdx];
+            if (!userAnswers[q.id]) userAnswers[q.id] = [];
+
+            const arr = userAnswers[q.id];
+            const idx = arr.indexOf(word);
+            if (idx > -1) {
+                arr.splice(idx, 1);
+            } else {
+                arr.push(word);
+            }
+            playToneSound('click');
+            renderQuizQuestion();
+            calculateScore();
+        }
+
+        function checkSingleAnswer(q) {
+            const ans = userAnswers[q.id];
+            if (q.type === 'mc') {
+                return { isCorrect: ans === q.correct };
+            } else if (q.type === 'fill') {
+                return { isCorrect: String(ans).toLowerCase() === q.correct.toLowerCase() };
+            } else if (q.type === 'arrange') {
+                return { isCorrect: (ans || []).join(' ') === q.correctSequence };
+            }
+            return { isCorrect: false };
+        }
+
+        function calculateScore() {
+            let correctCount = 0;
+            quizQuestions.forEach(q => {
+                if (userAnswers[q.id] !== undefined && checkSingleAnswer(q).isCorrect) {
+                    correctCount++;
+                }
+            });
+            studentData.score = Math.round((correctCount / quizQuestions.length) * 100);
+            document.getElementById('quiz-score-display').innerText = studentData.score;
+            saveStudentData();
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIdx < quizQuestions.length - 1) {
+                currentQuestionIdx++;
+                renderQuizQuestion();
+            } else {
+                // Quiz completed!
+                studentData.quizCompleted = true;
+                saveStudentData();
+                playToneSound('fanfare');
+                navigateTo('score');
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIdx > 0) {
+                currentQuestionIdx--;
+                renderQuizQuestion();
+            }
+        }
+
+        function updateSpeakingTarget() {
+            const val = document.getElementById('speaking-sentence-select').value;
+            document.getElementById('target-sentence-text').innerText = `"${val}"`;
+        }
+
+        function listenTargetSentence() {
+            const val = document.getElementById('speaking-sentence-select').value;
+            speakText(val);
+        }
+
+        function toggleSpeechRecognition() {
+            studentData.speakingTried = true;
+            saveStudentData();
+
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'en-US';
+
+                document.getElementById('mic-status').innerText = "Sedang mendengarkan... Bicara sekarang!";
+                document.getElementById('mic-pulse').classList.remove('opacity-0');
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('recognized-text').innerText = `"${transcript}"`;
+                    document.getElementById('mic-status').innerText = "Selesai mendengarkan.";
+                    document.getElementById('mic-pulse').classList.add('opacity-0');
+
+                    // Simple feedback
+                    const target = document.getElementById('speaking-sentence-select').value.toLowerCase();
+                    document.getElementById('speaking-feedback').classList.remove('hidden');
+                    playToneSound('success');
+                };
+
+                recognition.onerror = function() {
+                    document.getElementById('mic-status').innerText = "Gagal menangkap suara. Silakan coba lagi.";
+                    document.getElementById('mic-pulse').classList.add('opacity-0');
+                };
+
+                recognition.start();
+            } else {
+                // Simulation fallback for browsers without Web Speech Recognition
+                document.getElementById('mic-status').innerText = "Simulasi pengucapan lisan aktif!";
+                setTimeout(() => {
+                    const target = document.getElementById('speaking-sentence-select').value;
+                    document.getElementById('recognized-text').innerText = `"${target}"`;
+                    document.getElementById('speaking-feedback').classList.remove('hidden');
+                    playToneSound('success');
+                }, 1500);
+            }
+        }
+
+        function generateIDCard(e) {
+            e.preventDefault();
+            const name = document.getElementById('id-name').value;
+            const age = document.getElementById('id-age').value;
+            const city = document.getElementById('id-city').value;
+            const hobby = document.getElementById('id-hobby').value;
+            const food = document.getElementById('id-food').value;
+
+            document.getElementById('preview-name').innerText = name;
+            document.getElementById('preview-age').innerText = age;
+            document.getElementById('preview-city').innerText = city;
+            document.getElementById('preview-hobby').innerText = hobby;
+            document.getElementById('preview-food').innerText = food;
+
+            playToneSound('success');
+        }
+
+        function speakFullSelfIntro() {
+            const name = document.getElementById('preview-name').innerText;
+            const age = document.getElementById('preview-age').innerText;
+            const city = document.getElementById('preview-city').innerText;
+            const hobby = document.getElementById('preview-hobby').innerText;
+            const food = document.getElementById('preview-food').innerText;
+
+            const text = `Hello everyone! My name is ${name}. I am ${age} years old. I live in ${city}. My hobby is ${hobby}, and my favorite food is ${food}. Nice to meet you!`;
+            speakText(text);
+        }
+
+        function submitReflection(e) {
+            e.preventDefault();
+            const confidence = document.querySelector('input[name="confidence"]:checked')?.value || "-";
+            const like = document.getElementById('reflection-like').value;
+            const challenge = document.getElementById('reflection-challenge').value;
+
+            studentData.reflectionCompleted = true;
+            studentData.reflectionDetails = { confidence, like, challenge };
+            saveStudentData();
+
+            playToneSound('fanfare');
+            alert('Refleksi pembelajaran berhasil disimpan!');
+            navigateTo('score');
+        }
+
+        function updateScoreDashboard() {
+            document.getElementById('score-student-name').innerText = studentData.name || "Peserta Didik";
+            document.getElementById('score-student-class').innerText = "Kelas " + (studentData.class || "VII");
+            document.getElementById('final-score-val').innerText = studentData.score || 0;
+
+            document.getElementById('status-quiz').innerHTML = studentData.quizCompleted ? '<span class="text-emerald-600 font-bold"><i class="fa-solid fa-check"></i> Selesai</span>' : 'Belum Selesai';
+            document.getElementById('status-reflection').innerHTML = studentData.reflectionCompleted ? '<span class="text-emerald-600 font-bold"><i class="fa-solid fa-check"></i> Selesai</span>' : 'Belum Mengisi';
+
+            renderTeacherTable();
+            prepareDocsExportText();
+        }
+
+        function renderTeacherTable() {
+            const tbody = document.getElementById('teacher-table-body');
+            tbody.innerHTML = `
+                <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-3 font-semibold text-slate-800">${studentData.name}</td>
+                    <td class="px-4 py-3">${studentData.class}</td>
+                    <td class="px-4 py-3 font-bold text-sky-600">${studentData.score} / 100</td>
+                    <td class="px-4 py-3 text-xs">${studentData.reflectionDetails.confidence}</td>
+                    <td class="px-4 py-3">${studentData.reflectionCompleted ? '<span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full">Lengkap</span>' : '<span class="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-bold rounded-full">Proses</span>'}</td>
+                </tr>
+            `;
+        }
+
+        function prepareDocsExportText() {
+            const docText = `
+=====================================================
+LEMBAR HASIL BELAJAR & REFLEKSI PESERTA DIDIK
+Mata Pelajaran: Bahasa Inggris Kelas 7 SMP
+Topik         : ABOUT ME ("Let's Introduce Ourselves!")
+=====================================================
+
+A. DATA PESERTA DIDIK
+Nama Lengkap : ${studentData.name}
+Kelas        : ${studentData.class}
+Tanggal      : ${new Date().toLocaleDateString('id-ID')}
+
+B. PENCAPAIAN SKOR
+Skor Kuis Interaktif : ${studentData.score} / 100
+Status Kuis          : ${studentData.quizCompleted ? 'Lengkap' : 'Belum Selesai'}
+
+C. HASIL REFLEKSI BERKESADARAN
+1. Tingkat Kepercayaan Diri Berbicara: ${studentData.reflectionDetails.confidence}
+2. Materi yang Paling Disukai:
+   "${studentData.reflectionDetails.like}"
+3. Tantangan dalam Berbicara:
+   "${studentData.reflectionDetails.challenge}"
+
+=====================================================
+            `.trim();
+            document.getElementById('docs-export-text').value = docText;
+        }
+
+        function exportToCSV() {
+            const csvRows = [
+                ["Nama", "Kelas", "Skor Kuis", "Tingkat Kepercayaan Diri", "Materi Disukai", "Tantangan"],
+                [
+                    `"${studentData.name}"`,
+                    `"${studentData.class}"`,
+                    studentData.score,
+                    `"${studentData.reflectionDetails.confidence}"`,
+                    `"${studentData.reflectionDetails.like}"`,
+                    `"${studentData.reflectionDetails.challenge}"`
+                ]
+            ];
+            const csvContent = "data:text/csv;charset=utf-8," + csvRows.map(e => e.join(",")).join("\n");
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Rekap_Nilai_AboutMe_${studentData.name}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function copyToClipboard(elementId) {
+            const copyText = document.getElementById(elementId);
+            copyText.select();
+            document.execCommand('copy');
+            alert('Teks berhasil disalin! Tinggal ditempel (Paste) di Google Docs.');
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function clearLocalStorageData() {
+            if (confirm('Apakah Anda yakin ingin menghapus data nilai dan refleksi siswa?')) {
+                localStorage.removeItem('smp_about_me_student');
+                location.reload();
+            }
+        }
+
+        function playToneSound(type) {
+            try {
+                const synth = new Tone.Synth().toDestination();
+                if (type === 'click') {
+                    synth.triggerAttackRelease("C5", "8n");
+                } else if (type === 'success') {
+                    synth.triggerAttackRelease("G5", "8n");
+                } else if (type === 'fanfare') {
+                    const poly = new Tone.PolySynth().toDestination();
+                    poly.triggerAttackRelease(["C5", "E5", "G5", "C6"], "4n");
+                }
+            } catch(e) {}
+        }
+    </script>
+</body>
+</html>
